@@ -82,3 +82,5 @@ try:
     from .settings_local import *
 except ImportError:
     pass
+
+ALLOWED_HOSTS = ['192.168.0.64', ]
