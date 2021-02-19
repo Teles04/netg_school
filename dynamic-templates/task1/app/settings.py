@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.64', ]
 
 
 # Application definition
@@ -113,3 +113,9 @@ try:
     from .settings_local import *
 except ImportError:
     pass
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+INFLATION_RUSSIA = os.path.join(BASE_DIR, 'inflation_russia.csv')
