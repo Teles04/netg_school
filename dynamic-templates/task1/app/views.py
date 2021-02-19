@@ -1,27 +1,27 @@
 from django.shortcuts import render
 
-
 import csv
 
+from app.management.commands.add_color import add_color
+
+
 def inflation_view(request):
-    data_from_csv = []
-    dfc = []
-    new_dict = []
+    dict_from_file = []
+    temp_list = []
     with open('inflation_russia.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=';')
-
         for row in reader:
-            dfc.append(row)
-    for row in dfc:
+            dict_from_file.append(row)
+
+    for row in dict_from_file:
         dict_keys = row.keys()
-    for row in dfc:
-        new_dict.append(row.items())
-#    for rows in dfc:
-#        dict_values.append(rows.values())
+        temp_list.append(row.items())
+
+    list_with_color = add_color(temp_list)
+
     context = {
-        'd_f_c': dfc,
         'keys': dict_keys,
-        'dict': new_dict,
+        'list': list_with_color,
     }
     return render(request, 'inflation.html', context)
 

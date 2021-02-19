@@ -31,58 +31,25 @@
               {% endfor %}
             </tr>
             <tr>
-              {% for item in dict %}
+              {% for item in list %}
                 <tr>
-                {% for key, value in item %}
-                  {% if value == '' %}
-                      <td>
-                          -
-                      </td>
-                  {% elif value|do_float < 0 %}
-                      <td bgcolor="#00FF66">
-                         {{ value }}
-                     </td>
-                  {% elif 1 < value|do_float and value|do_float <= 2 %}
-                      <td bgcolor="#F5A9A9">
-                         {{ value }}
-                     </td>
-                  {% elif 2 < value|do_float and value|do_float <= 5 %}
-                    {% if key == 'Суммарная' %}
-                      <td>
-                          {{ value }}
-                     </td>
-                    {% else %}
-                      <td bgcolor="#F78181">
-                          {{ value }}
-                      </td>
-                    {% endif %}
-                  {% elif 5 < value|do_float %}
-                    {% if key == 'Год' or key == 'Суммарная' %}
-                      <td>
-                          {{ value }}
-                     </td>
-                    {% else %}
-                      <td bgcolor="#DF0101">
-                          {{ value }}
-                     </td>
-                    {% endif %}
-                  {% else %}
-                      <td>
-                         {{ value }}
-                     </td>
-                  {% endif %}
-                {% endfor %}
+                    {% for key, value, color in item %}
+                        {% if value == None %}
+                            <td>
+                                -
+                            </td>
+                        {% elif value != '' %}
+                            <td bgcolor="{{ color }}">
+                                {{ value }}
+                            </td>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
               {% endfor %}
-
-
             </tr>
           </tbody>
         </table>
-
-
       </div>
     {% endblock %}
-
   </body>
 </html>
