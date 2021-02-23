@@ -5,10 +5,12 @@
 {% block content %}
     <div class="container">
         <div class="header">
-            <h1>Телефон</h1>
+             <h1>Телефон</h1>
         </div>
         <div class="content">
-
+            <p> {{ phone.name }}</p>
+            <p> {{ phone.price }}</p>
+            <img src={{ phone.image }}>
         </div>
     </div>
 {% endblock %}

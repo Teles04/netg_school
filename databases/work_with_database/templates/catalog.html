@@ -8,12 +8,30 @@
             <h1><a href="/catalog">Каталог</a></h1>
         </div>
 
-        <div class="sort-block">
-            {# Здесь должен быть раздел с сортировкой #}
-        </div>
-
-        <div class="content">
-            {# Здесь должен отображаться каталог с телефонами #}
+         <div class="sort-block">
+            <div class="row">
+              <div class="col-xs-6 col-sm-3">
+                Сортировать:
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <a href="{% url 'show_catalog' %}?sort=name">по названию</a>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <a href="{% url 'show_catalog' %}?sort=price-min">начиная с дешевых</a>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <a href="{% url 'show_catalog' %}?sort=price-max">начиная с дорогих</a>
+              </div>
+            </div>
+         </div>
+        <div class="row mt-5">
+        {% for phone in phones%}
+            <div class="col-md-6">
+                <h3> {{ phone.name }} </h3>
+                <p> {{ phone.price }} </p>
+                <p><a href="{% url 'show_product' phone.slug %}"><img src={{ phone.image }}></a></p>
+            </div>
+        {% endfor %}
         </div>
     </div>
 {% endblock %}
