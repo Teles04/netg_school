@@ -1,15 +1,16 @@
 from django.views.generic import ListView
 from django.shortcuts import render
 
-from articles.models import Article, Teg
+from articles.models import Article, Teg, MainArticleChoice
 
 
 def articles_list(request):
     template = 'articles/news.html'
     object_list = Article.objects.all()
+    some_list=[]
     for a in object_list:
-        b = a.Tegs.filter()
-        print(b.values)
+        print(a)
+
     context = {'object_list': object_list}
 
     # используйте этот параметр для упорядочивания результатов
